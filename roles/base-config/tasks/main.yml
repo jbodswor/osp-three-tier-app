@@ -1,0 +1,18 @@
+---
+# tasks file for base-config
+
+- name: Enable repos for hosts
+  copy:
+    src: open_three-tier-app.repo
+    dest: /etc/yum.repos.d/open_three-tier-app.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install packages
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - httpie
+    - python-pip
